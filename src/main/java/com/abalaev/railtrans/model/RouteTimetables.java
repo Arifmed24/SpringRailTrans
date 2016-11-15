@@ -7,32 +7,30 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Route_Timetables", schema = "mydb")
-@NamedQueries(
-        {
-                @NamedQuery(name = "RouteTimetables.getAll",
-                        query = "SELECT r FROM RouteTimetables r"),
-                @NamedQuery(name = "RouteTimetables.getStationTimetableArr",
-                        query = "SELECT rt FROM RouteTimetables rt INNER JOIN rt.line l " +
-                                " WHERE l.stationArrival =:station " +
-                                " AND rt.dateArrival between :date1 AND:date2"),
-                @NamedQuery(name = "RouteTimetables.getStationTimetableDep",
-                        query = "SELECT rt FROM RouteTimetables rt INNER JOIN rt.line l " +
-                                " WHERE l.stationDeparture =:station " +
-                                " AND rt.dateDeparture between :date1 AND:date2"),
-                @NamedQuery(name = "RouteTimetables.getRoutes",
-                        query = "SELECT r FROM RouteTimetables r order by r.numberInRoute"),
-                @NamedQuery(name = "RouteTimetables.getRouteTimetableByRouteAndNumberInRoute",
-                        query = "SELECT r FROM RouteTimetables r WHERE r.routeId =:route AND r.numberInRoute = :number "
-                                +  "AND r.dateDeparture > :dateBegin "
-                                +   "AND r.dateArrival < :dateEnd AND r.freeSeats > 0 order by r.dateDeparture"),
-                @NamedQuery(name = "RouteTimetables.getListRtByRoute" ,
-                        query = "SELECT r FROM RouteTimetables r WHERE r.routeId =:route GROUP BY r.routeId, r.numberInRoute"),
-                @NamedQuery(name = "RouteTimetables.getRoutesWithPassengers",
-                        query = "SELECT r FROM RouteTimetables r WHERE r.routeId =:route AND r.numberInRoute = :number "
-                                +  "AND r.dateDeparture > :dateBegin "
-                                +   "AND r.dateArrival < :dateEnd order by r.dateDeparture")
-        }
-)
+@NamedQueries({
+    @NamedQuery(name = "RouteTimetables.getAll", query = "SELECT r FROM RouteTimetables r"),
+    @NamedQuery(name = "RouteTimetables.getStationTimetableArr",
+            query = "SELECT rt FROM RouteTimetables rt INNER JOIN rt.line l " +
+                    " WHERE l.stationArrival =:station " +
+                    " AND rt.dateArrival between :date1 AND:date2"),
+    @NamedQuery(name = "RouteTimetables.getStationTimetableDep",
+            query = "SELECT rt FROM RouteTimetables rt INNER JOIN rt.line l " +
+                    " WHERE l.stationDeparture =:station " +
+                    " AND rt.dateDeparture between :date1 AND:date2"),
+    @NamedQuery(name = "RouteTimetables.getRoutes", query = "SELECT r FROM RouteTimetables r order by r.numberInRoute"),
+    @NamedQuery(name = "RouteTimetables.getRouteTimetableByRouteAndNumberInRoute",
+            query = "SELECT r FROM RouteTimetables r WHERE r.routeId =:route AND r.numberInRoute = :number "
+                    +  "AND r.dateDeparture > :dateBegin "
+                    +   "AND r.dateArrival < :dateEnd AND r.freeSeats > 0 order by r.dateDeparture"),
+    @NamedQuery(name = "RouteTimetables.getListRtByRoute" , query = "SELECT r FROM RouteTimetables r WHERE r.routeId =:route GROUP BY r.routeId, r.numberInRoute"),
+    @NamedQuery(name = "RouteTimetables.getRoutesWithPassengers",
+            query = "SELECT r FROM RouteTimetables r WHERE r.routeId =:route AND r.numberInRoute = :number "
+                    +  "AND r.dateDeparture > :dateBegin "
+                    +   "AND :dateEnd > r.dateArrival order by r.dateDeparture"),
+    @NamedQuery(name ="RouteTimetables.getRouteTimetablesInPeriod",
+        query = "SELECT r FROM RouteTimetables r WHERE r.dateDeparture > :dateBegin " +
+                "AND :dateEnd < r.dateArrival")
+})
 public class RouteTimetables extends Throwable {
 
     @Id

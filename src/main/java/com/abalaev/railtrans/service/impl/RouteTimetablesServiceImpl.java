@@ -396,4 +396,10 @@ public class RouteTimetablesServiceImpl implements RouteTimetablesService {
         LOG.info("finished finding");
         return result;
     }
+
+    @Override
+    public List<RouteTimetables> getRouteTimetablesInPeriod(Date dateBegin, Date dateEnd) {
+        List<RouteTimetables> routeTimetablesInPeriod = routeTimetablesDao.getRouteTimetablesInPeriod(dateBegin, dateEnd);
+        return routeTimetablesInPeriod;
+    }
 }

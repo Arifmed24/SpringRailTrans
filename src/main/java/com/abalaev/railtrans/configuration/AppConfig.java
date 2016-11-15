@@ -1,10 +1,7 @@
 package com.abalaev.railtrans.configuration;
 
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -19,8 +16,10 @@ import java.util.Properties;
 
 @EnableWebMvc //разрешает проект использовать MVC
 @Configuration // данный класс является Java Configuration
-@ComponentScan(basePackages = "com.abalaev.railtrans") //где искать компоненты проекта.
-//@Import({SecurityConfig.class}) //импорт Security
+@ComponentScan(basePackages = "com.abalaev.railtrans", excludeFilters = {
+        @ComponentScan.Filter(type = FilterType.ANNOTATION,value = Configuration.class)
+}) //где искать компоненты проекта.
+@Import({SecurityConfig.class, HibernateConfiguration.class}) //импорт Security
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     //отвечайте за показ View в нашем случае это jsp страницы

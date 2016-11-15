@@ -4,8 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Train", schema = "mydb")
-@NamedQuery(name = "Train.getAllTrains",
-        query = "SELECT t FROM Train t")
+@NamedQuery(name = "Train.getAllTrains", query = "SELECT t FROM Train t")
 public class Train extends Throwable {
     @Id
     @Column(name = "idTrain", nullable = false)

@@ -4,12 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Station", schema = "mydb")
-@NamedQueries(
-        {
-                @NamedQuery(name = "Station.findStationByName", query = "SELECT s FROM Station s WHERE s.stationName = :stationName"),
-                @NamedQuery(name = "Station.getAll", query = "SELECT s FROM Station s")
-        }
-)
+@NamedQueries({
+    @NamedQuery(name = "Station.findStationByName", query = "SELECT s FROM Station s WHERE s.stationName = :stationName"),
+    @NamedQuery(name = "Station.getAll", query = "SELECT s FROM Station s")
+})
 public class Station extends Throwable {
     @Id
     @Column(name = "idStation", nullable = false)

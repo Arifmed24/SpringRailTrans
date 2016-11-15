@@ -4,7 +4,9 @@ import com.abalaev.railtrans.dao.api.RouteTimetablesDao;
 import com.abalaev.railtrans.model.Route;
 import com.abalaev.railtrans.model.RouteTimetables;
 import com.abalaev.railtrans.model.Station;
+import com.abalaev.railtrans.service.api.RouteTimetablesService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -133,4 +135,21 @@ public class RouteTimetablesDaoImpl extends GenericDaoImpl<RouteTimetables, Inte
         }
         return result;
     }
+
+    @Override
+    public List<RouteTimetables> getRouteTimetablesInPeriod(Date dateBegin, Date dateEnd) {
+        List<RouteTimetables> result = null;
+        try {
+            TypedQuery<RouteTimetables> query;
+            query = em.createNamedQuery("RouteTimetables.getRouteTimetablesInPeriod", RouteTimetables.class);
+            query.setParameter("dateBegin", dateBegin, TemporalType.TIMESTAMP);
+            query.setParameter("dateEnd", dateEnd, TemporalType.TIMESTAMP);
+            result = query.getResultList();
+        } catch (Exception e)
+        {
+            em.getTransaction().rollback();
+        }
+        return result;
+    }
+
 }

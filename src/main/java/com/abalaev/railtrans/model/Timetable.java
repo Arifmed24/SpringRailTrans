@@ -4,8 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Timetable", schema = "mydb")
-@NamedQuery(name = "Timetable.readByStations",
-        query = "SELECT t FROM Timetable t WHERE t.stationDeparture = :begin AND t.stationArrival = :end")
+@NamedQuery(name = "Timetable.readByStations", query = "SELECT t FROM Timetable t WHERE t.stationDeparture = :begin AND t.stationArrival = :end")
 public class Timetable extends Throwable {
     @Id
     @Column(name = "idLine", nullable = false)

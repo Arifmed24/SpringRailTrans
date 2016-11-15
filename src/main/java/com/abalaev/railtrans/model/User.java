@@ -122,8 +122,4 @@ public class User {
 
     public User() {    }
 
-//    public UserDetails toCurrentUserDetails() {
-//        return SecurityUser.create(this);
-//    }
-
 }

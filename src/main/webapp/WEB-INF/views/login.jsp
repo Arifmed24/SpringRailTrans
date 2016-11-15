@@ -42,53 +42,6 @@
             </div>
         </div>
     </div>
-</div><%--
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<div class="container z-depth-3">
-    <div class="card-panel teal lime">
-        <form action="/login" method="POST" >
-            <h3 class="center-align white-text">PLEASE LOG IN</h3>
-            <c:if test="${param.error != null}">
-                <p>
-                    Invalid username and password.
-                </p>
-            </c:if>
-            <p class="teal-text lighten-2"><b>Login</b></p>
-            <c:choose>
-                <c:when test="${!empty errorLog}">
-                    <input type="text" name="login">
-                    <span class="red-text"><b><i><sup><c:out value="${errorLog}"/></sup></i></b></span>
-                </c:when>
-                <c:otherwise>
-                    <input type="text" name="login" >
-                </c:otherwise>
-            </c:choose>
-
-            <p class="teal-text lighten-2"><b>Password</b></p>
-            <c:choose>
-                <c:when test="${!empty errorPas}">
-                    <input type="password" name="password">
-                    <span class="red-text"><b><i><sup><c:out value="${errorPas}"/></sup></i></b></span>
-                </c:when>
-                <c:otherwise>
-                    <input type="password" name="password">
-                </c:otherwise>
-            </c:choose>
-            <div class="row">
-                <div class="col s6">
-                    <button type="submit" class="btn waves-light waves-effect">
-                        Log in
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
-                <div class="col s6 right-align">
-                    <a href="/registration" class="btn waves-effect waves-light">Registration<i class="material-icons right">add</i></a>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>--%>
+</div>
 </body>
 </html>

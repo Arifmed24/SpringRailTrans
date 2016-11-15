@@ -68,4 +68,11 @@ public class StationServiceImpl implements StationService {
         LOG.info("finish checking stations in route");
         return result;
     }
+
+    @Override
+    public Integer getNumberOfStations(List<Station> stations) {
+        return stations.size();
+    }
+
+
 }

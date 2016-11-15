@@ -12,4 +12,5 @@ public interface StationService {
     Station createStation(Station station);
     Station updateStation(Station station);
     List<Station> checkStationsInRoute (Route route, List<String> stationsId) throws Exception;
+    Integer getNumberOfStations(List<Station> stations);
 }
